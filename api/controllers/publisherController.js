@@ -3,11 +3,14 @@ const _myGame = mongoose.model("Game");
 
 const _addPublisher = function (request, response, _game) {
     _game.publisher.push(request.body);
+    // _game.publisher.name = request.body.name;
+    // _game.publisher.country = request.body.country;
+
     _game.save(function (error, _updatedGame) {
         
         const resp = {
             status: 201,
-            message: _updatedGame.publishser
+            message: _updatedGame
         };
 
         if (error) {
@@ -68,7 +71,7 @@ module.exports.addOnePublisher = function (request, response) {
 }
 module.exports.fUllUpdateOnePublisher = function (request, response) {
     const gameID = request.params.gameID;
-    _myGame.findByIdAndUpdate(gameID, {
+    _myGame.findByIdAndUpdate(gameID, { 
         publisher: {
             name: request.body.name,
             address: request.body.address

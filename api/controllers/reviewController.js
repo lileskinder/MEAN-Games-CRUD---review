@@ -7,7 +7,7 @@ const _addReview = function (request, response, _game) {
         
         const resp = {
             status: 201,
-            message: _updatedGame.reviews
+            message: _updatedGame
         };
 
         if (error) {
